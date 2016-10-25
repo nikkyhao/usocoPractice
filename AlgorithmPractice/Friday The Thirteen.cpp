@@ -18,7 +18,7 @@ int cal_days(int year, int month);
 int n;//总共的年数
 int yue_leap[] = {31,29,31,30,31,30,31,31,30,31,30,31 };
 int yue[] = { 31,28,31,30,31,30,31,31,30,31,30,31 };
-int main()
+int main_friday()
 {
 	ifstream fin("friday.in");
 	ofstream fout("friday.out");
