@@ -21,7 +21,7 @@ Node nodes[5000];
 vector<Node> vec;
 
 
-int main()
+int main_milk2()
 {
 	ifstream fin("milk2.in");
 	ofstream fout("milk2.out");
