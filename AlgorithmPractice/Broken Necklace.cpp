@@ -14,7 +14,7 @@ int my_max(int a, int b);
 using namespace std;
 char beads[710];
 
-int main()
+int main_beads()
 {
 	ifstream fin("beads.in");
 	ofstream fout("beads.out");
@@ -54,6 +54,7 @@ int main()
 	}
 	if (max > num) max = num;
 	fout << max<<endl;
+	return 0;
 }
 
 int my_max(int a, int b) {
