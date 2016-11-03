@@ -32,7 +32,7 @@ private:
 	Mat* afterMat;
 	
 
-	int main()
+	int main_transform()
 {
 	//ifstream fin("Section1.2/transform.in");
 	//ofstream fout("Section1.2/transform.out");

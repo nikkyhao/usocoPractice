@@ -36,7 +36,7 @@ using namespace std;
 set<string> sets;
 const char map[10][3] = { {},{},{ 'A','B','C' },{ 'D','E','F' },{ 'G','H','I' },{ 'J','K','L' },{ 'M','N','O' },{ 'P','R','S' },{ 'T','U','V' },{ 'W','X','Y' } };
 int answernum = 0;
-int main()
+int main_namenum()
 {
 	//clock_t start;
 	//start = clock();
