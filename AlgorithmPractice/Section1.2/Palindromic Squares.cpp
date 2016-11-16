@@ -14,12 +14,12 @@ LANG: C++
 
 using namespace std;
 
-char letters[20] = { '0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F','G','H','I','J' };
+char letterss[20] = { '0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F','G','H','I','J' };
 class BaseNum {
 public:
 	BaseNum(int _base) { base = _base; number = 0; length = get_length(); }
 	BaseNum(int _base, int num) { base = _base; number = num; length = get_length(); }
-	void set_number(int num) { number = num;  length = get_length();}
+	inline void set_number(int num) { number = num;  length = get_length();}
 	bool isPal()//是否回文
 	{
 		for (int i = 0; i < length; i++)
@@ -29,9 +29,9 @@ public:
 		return true;
 	}
 	char get(int i) {//目前是从右往左
-		if (i == 0) return letters[number % base];
+		if (i == 0) return letterss[number % base];
 		else {
-			return letters[(number / (int)pow(base, i)) % base];
+			return letterss[(number / (int)pow(base, i)) % base];
 		}
 	}
 	void square() { number = number *number; length = get_length();}
@@ -45,7 +45,6 @@ public:
 		}
 	}
 	void plus() { number++; }
-
 private:
 	int base;
 	int number;
@@ -60,12 +59,12 @@ private:
 };
 
 int base;
-int main()
+int main_palsquare()
 {
-	//ifstream fin("Section1.2/palsquare.in");
-	//ofstream fout("Section1.2/palsquare.out");
-	ifstream fin("palsquare.in");
-	ofstream fout("palsquare.out");
+	ifstream fin("Section1.2/palsquare.in");
+	ofstream fout("Section1.2/palsquare.out");
+	//ifstream fin("palsquare.in");
+	//ofstream fout("palsquare.out");
 	fin >> base;
 	BaseNum num(base, 1);
 	BaseNum num2(base, 1);
@@ -79,7 +78,6 @@ int main()
 			num.toString(fout); fout << endl;
 		}
 	}
-
-
 	return 0;
 }
+

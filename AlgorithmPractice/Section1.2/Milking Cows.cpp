@@ -9,7 +9,7 @@ LANG: C++
 using namespace std;
 
 struct Node {
-	int a;
+	int a;s
 	int b;
 };
 void SortBya(Node node[], int length);
