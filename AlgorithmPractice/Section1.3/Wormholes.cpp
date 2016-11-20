@@ -53,7 +53,7 @@ int solve(void)
 		}
 	return total;
 }
-int main()
+int main_wormhole()
 {
 	ifstream fin("wormhole.in");
 	ofstream fout("wormhole.out");

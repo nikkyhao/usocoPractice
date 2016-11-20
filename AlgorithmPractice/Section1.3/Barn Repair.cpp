@@ -8,52 +8,67 @@ LANG: C++
 #include<iostream>
 #include<vector>
 
-using namespace std;
+int find_max(int arr[], int c) {
+	int max = -1;
+	int max_index = -1;
+	int i;
 
-void swap(int a[][2], int i, int j);
-
-int require;
-int farmer[5000][2];
-int main_barn()
-{
-	ifstream fin("Section1.3/barn1.in");
-	ofstream fout("Section1.3/barn1.out");
-	//ifstream fin("barn1.in");
-	//ofstream fout("barn1.out");
-	fin >> require;
-	int farmer_num;
-	fin >> farmer_num;
-	for (int i = 0; i < farmer_num; i++)
-	{
-		fin >> farmer[i][0];
-		fin >> farmer[i][1];
+	for (i = 0; i<c; i++) {
+		if (arr[i] >= max) {
+			max = arr[i];
+			max_index = i;
+		}
 	}
 
-	int total_unit = 0;
-	int total_money = 0;
-	for (int i = 0; i < farmer_num; i++)
-	{
-		int min = i;
-		for (int j = i + 1; j < farmer_num; j++)
-		{
-			if (farmer[j][0] < farmer[min][0])
-				min = j;
-		}
-		if (total_unit < require) {
-			int need = farmer[min][1] < (require- total_unit) ? farmer[min][1] : require - total_unit;
-			total_unit += need;
-			total_money += need*farmer[min][0];
-		}
-			swap(farmer, min, i);
-	}
-	fout << total_money << endl;
-	return 0;
+	return max_index;
 }
 
-void swap(int a[][2],int i,int j)
-{
-	int one, two;
-	one = a[i][0];       two = a[i][1];
-	a[i][0] = a[j][0];   a[i][1] = a[j][1];
-	a[j][0] = one;       a[j][1] = two;
+void sort_arr(int arr[], int c) {
+	int i, j, temp;
+
+	for (i = c - 1; i>0; i--) {
+		for (j = 0; j<i; j++) {
+			if (arr[j]>arr[j + 1]) {
+				temp = arr[j + 1];
+				arr[j + 1] = arr[j];
+				arr[j] = temp;
+			}
+		}
+	}
+}
+int main(void) {
+	int m, s, c, i, total, index;
+	FILE *fin = fopen("barn1.in", "r");
+	FILE *fout = fopen("barn1.out", "w");
+
+	fscanf(fin, "%d %d %d", &m, &s, &c);
+
+	int * arr = (int *)malloc(c * sizeof(int));
+	int * arr_gap = (int *)malloc(c * sizeof(int));
+
+	for (i = 0; i<c; i++) {
+		fscanf(fin, "%d", &arr[i]);
+	}
+
+	sort_arr(arr, c);
+
+	arr_gap[0] = 0;
+	for (i = 1; i<c; i++) {
+		arr_gap[i] = arr[i] - arr[i - 1];
+	}
+
+	if (m >= c) {
+		total = c;
+	}
+	else {
+		total = arr[c - 1] - arr[0] + 1;
+
+		for (i = 1; i<m; i++) {
+			index = find_max(arr_gap, c);
+			total -= (arr_gap[index] - 1);
+			arr_gap[index] = 0;
+		}
+	}
+	fprintf(fout, "%d\n", total);
+	return 0;
 }
